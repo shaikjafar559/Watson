@@ -1,0 +1,158 @@
+from docx import Document
+from docx.shared import Inches
+
+# Create a new Word Document
+doc = Document()
+
+# Title
+doc.add_heading('Project Proposal for IBM watsonx Challenge', 0)
+
+# Subtitle
+doc.add_heading('Compliance Copilot: AI-Powered Compliance for SMBs', level=1)
+
+# Problem Statement
+doc.add_heading('Problem Statement:', level=2)
+doc.add_paragraph(
+    "Small and medium-sized businesses (SMBs) operating in regulated industries such as healthcare, finance, and "
+    "logistics often lack the legal and technical resources to stay compliant with evolving regulations such as HIPAA, "
+    "GDPR, and CCPA. Manual compliance processes are error-prone, expensive, and unsustainable, leaving businesses "
+    "exposed to significant legal and financial risks."
+)
+
+# Proposed Solution
+doc.add_heading('Proposed Solution to the Problem:', level=2)
+doc.add_paragraph("An AI-powered compliance assistant for SMBs, built using IBM watsonx, that automates and simplifies regulatory compliance end-to-end.")
+
+doc.add_heading('Core Capabilities:', level=3)
+capabilities = [
+    ("Document Ingestion & Analysis", "Upload internal policies, contracts, procedures. watsonx.ai extracts key clauses and maps them to regulatory requirements."),
+    ("Regulation Alignment Engine", "watsonx.data queries latest regulations via APIs (e.g., HIPAA updates). AI checks alignment and flags inconsistencies."),
+    ("Conversational Assistant", "Users ask questions like “Are we GDPR-compliant with our customer data retention policy?” watsonx.ai responds with plain-English answers + legal references."),
+    ("Risk Scoring & Recommendation System", "AI assigns compliance risk scores and offers prioritized suggestions for remediation."),
+    ("Audit Trail & Governance", "watsonx.governance logs all checks, decisions, and changes. Produces reports suitable for external auditors and regulators.")
+]
+for title, desc in capabilities:
+    doc.add_paragraph(f"{title}:\n{desc}", style='List Bullet')
+
+# Why It Works Table (simplified with bullet points)
+doc.add_heading('Why It Works for SMBs:', level=3)
+doc.add_paragraph(
+    "- No in-house legal expertise: Plain-language explanations & guidance\n"
+    "- Manual audits take time and cost: Instant AI-based assessments\n"
+    "- Evolving regulations hard to track: Automated real-time regulatory feeds\n"
+    "- Risk of non-compliance fines: Proactive alerts & remediation steps\n"
+    "- Poor visibility across systems: Central dashboard + auto-generated reports"
+)
+
+# Strategic Benefits
+doc.add_heading('Strategic Benefits:', level=3)
+doc.add_paragraph(
+    "- Cost-effective: Replaces costly consultants with AI\n"
+    "- Scalable: Grows with the business\n"
+    "- Trustworthy: watsonx.governance ensures transparency\n"
+    "- Cross-Industry: Useful for healthcare, logistics, insurance, fintech"
+)
+
+# Solution Overview
+doc.add_heading('Solution Overview:', level=2)
+doc.add_paragraph(
+    "The Compliance Copilot is an AI-powered assistant built using IBM's watsonx platform. It empowers SMBs to stay compliant by:"
+    "\n- Ingesting internal policies and mapping them against regulatory requirements"
+    "\n- Providing plain-language explanations and actionable recommendations"
+    "\n- Maintaining detailed audit trails for accountability"
+    "\n- Monitoring real-time regulatory changes"
+)
+
+# Key Features
+doc.add_heading('Key Features:', level=2)
+doc.add_paragraph(
+    "- Conversational Compliance Assistant\n"
+    "- Document Analysis\n"
+    "- Risk Scoring\n"
+    "- Audit Trail Management"
+)
+
+# Technology Stack Table (simplified)
+doc.add_heading('Technology Stack and watsonx Integration:', level=2)
+doc.add_paragraph(
+    "watsonx.ai: Conversational interface for compliance questions\n"
+    "watsonx.data: Ingests and queries regulation + internal data\n"
+    "watsonx.governance: Ensures transparency, logs AI decisions and risks"
+)
+
+# Architecture Diagram Description
+doc.add_heading('System Architecture:', level=2)
+doc.add_paragraph(
+    "+--------------------+       +-------------------+       +----------------------+\n"
+    "|    User Dashboard  | <-->  |    watsonx.ai     | <-->  |   watsonx.data       |\n"
+    "| (upload, questions)|       | (query analysis)  |       | (data processing)    |\n"
+    "+--------------------+       +-------------------+       +----------------------+\n"
+    "         |                                                   |\n"
+    "         v                                                   v\n"
+    "+-------------------------+                          +-----------------------+\n"
+    "| watsonx.governance      |<------------------------| Compliance Output      |\n"
+    "| (audit logging, reports)|                          | (recommendations,     |\n"
+    "+-------------------------+                          |  risk scores)         |\n"
+    "                                                     +-----------------------+"
+)
+
+# Use Case
+doc.add_heading('Use Case Scenario:', level=2)
+doc.add_paragraph(
+    "A healthcare clinic uploads internal procedures and asks the assistant to verify HIPAA compliance. The system identifies gaps, explains them in plain English, and generates a checklist to fix them. A full report is generated for auditors."
+)
+
+# Target Audience
+doc.add_heading('Target Audience:', level=2)
+doc.add_paragraph(
+    "- Healthcare clinics\n"
+    "- Legal service providers\n"
+    "- Insurance firms\n"
+    "- Logistics companies"
+)
+
+# Benefits
+doc.add_heading('Benefits:', level=2)
+doc.add_paragraph(
+    "- Reduces cost and complexity of compliance\n"
+    "- Enables non-technical teams to understand regulations\n"
+    "- Builds trust with stakeholders and auditors\n"
+    "- Scales across industries and geographies"
+)
+
+# Final Section
+doc.add_heading('Why This Project Will Win:', level=2)
+doc.add_paragraph(
+    "- Addresses a critical, underserved pain point\n"
+    "- Demonstrates powerful use of all three watsonx components\n"
+    "- Ethical, explainable, and scalable AI solution\n"
+    "- Strong potential for commercialization and industry impact"
+)
+
+# Next Steps
+doc.add_heading('Next Steps:', level=2)
+doc.add_paragraph(
+    "- Build MVP using watsonx Studio\n"
+    "- Define Regulatory Coverage Modules (HIPAA, GDPR, etc.)\n"
+    "- Conduct User Testing with SMBs\n"
+    "- Launch Beta Pilot with Feedback Loop"
+)
+
+# Team
+doc.add_heading('Team:', level=2)
+doc.add_paragraph(
+    "- [Your Name / Role]\n"
+    "- [Team Members / Roles]"
+)
+
+# Call to Action
+doc.add_heading('Call to Action:', level=2)
+doc.add_paragraph(
+    "Let's empower SMBs to stay ahead of compliance — with AI they can trust.\n\n*Submitted for the IBM watsonx Challenge*"
+)
+
+# Save the document
+output_path = "/mnt/data/Compliance_Copilot_Proposal.docx"
+doc.save(output_path)
+
+output_path
