@@ -1,0 +1,50 @@
+from docx import Document
+from docx.shared import Inches
+import os
+from PIL import Image
+
+# Load text content from the updated proposal
+textdoc_path = "/mnt/data/Watsonx_Challenge_Proposal.docx"
+doc = Document()
+
+# Title
+doc.add_heading("Project Proposal for IBM watsonx Challenge", 0)
+
+# Sections (based on updated content in canvas)
+sections = [
+    ("Title", "Compliance Copilot: AI-Powered Compliance for SMBs"),
+    ("Problem Statement", "Small and medium-sized businesses (SMBs) operating in regulated industries such as healthcare, finance, and logistics often lack the legal and technical resources to stay compliant with evolving regulations such as HIPAA, GDPR, and CCPA. Manual compliance processes are error-prone, expensive, and unsustainable, leaving businesses exposed to significant legal and financial risks."),
+    ("Proposed Solution to the Problem", "A digital assistant platform powered by IBM watsonx that helps SMBs automate, simplify, and stay up-to-date with compliance across key regulations like HIPAA, GDPR, and CCPA — without needing in-house legal/technical teams."),
+    ("Core Capabilities", "- Document Ingestion & Analysis\n- Regulation Alignment Engine\n- Conversational Assistant\n- Risk Scoring & Recommendation System\n- Audit Trail & Governance"),
+    ("Why It Works for SMBs", "- No in-house legal expertise → Plain-language explanations\n- Manual audits → Instant AI-based assessments\n- Evolving regulations → Real-time feeds\n- Risk of fines → Proactive alerts\n- Poor visibility → Central dashboard"),
+    ("Strategic Benefits", "- Cost-effective\n- Scalable\n- Trustworthy\n- Cross-Industry"),
+    ("Solution Overview", "The Compliance Copilot is an AI-powered assistant built using IBM's watsonx platform. It empowers SMBs to stay compliant by:\n- Ingesting internal policies and mapping them against regulatory requirements\n- Providing plain-language explanations and actionable recommendations\n- Maintaining detailed audit trails for accountability\n- Monitoring real-time regulatory changes"),
+    ("Key Features", "- Conversational Compliance Assistant\n- Document Analysis\n- Risk Scoring\n- Audit Trail Management"),
+    ("Technology Stack and watsonx Integration", "- watsonx.ai: Conversational interface\n- watsonx.data: Data ingestion and querying\n- watsonx.governance: Logging and auditability"),
+    ("System Architecture", "- User Dashboard\n- watsonx.ai\n- watsonx.data\n- watsonx.governance\n- Compliance Output"),
+    ("Use Case Scenario", "A healthcare clinic uploads internal procedures and asks the assistant to verify HIPAA compliance. The system identifies gaps, explains them, and generates a checklist. A full report is created for auditors."),
+    ("Target Audience", "- Healthcare clinics\n- Legal service providers\n- Insurance firms\n- Logistics companies"),
+    ("Benefits", "- Reduces cost and complexity\n- Enables understanding of regulations\n- Builds trust\n- Scales easily"),
+    ("Why This Project Will Win", "- Solves a real need\n- Uses all watsonx components\n- Ethical and scalable\n- High commercialization potential"),
+    ("Next Steps", "- Build MVP using watsonx Studio\n- Define Regulatory Coverage Modules\n- Conduct User Testing with SMBs\n- Launch Beta Pilot with Feedback Loop"),
+    ("Team", "- [Your Name / Role]\n- [Team Members / Roles]"),
+    ("Call to Action", "Let's empower SMBs to stay ahead of compliance — with AI they can trust.\n\n*Submitted for the IBM watsonx Challenge*")
+]
+
+# Add sections
+for title, content in sections:
+    doc.add_heading(title, level=1)
+    for para in content.split("\n"):
+        doc.add_paragraph(para.strip())
+
+# Add architecture diagram
+image_path = "/mnt/data/A_flowchart_titled_\"Compliance_Copilot:_AI-Powered.png"
+if os.path.exists(image_path):
+    doc.add_page_break()
+    doc.add_heading("Visual Diagram: System Architecture", level=1)
+    doc.add_picture(image_path, width=Inches(6))
+
+# Save the updated document
+output_path = "/mnt/data/Final_Compliance_Copilot_Proposal_with_Diagrams.docx"
+doc.save(output_path)
+output_path
